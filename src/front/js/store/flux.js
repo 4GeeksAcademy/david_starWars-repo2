@@ -16,7 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			agenda: '/mrRobot',
 			contacts: [{}],
 			counter: 0,
-			favorites: ['David', 'paca']
+			favorites: []
 		},
 		actions: {
 			exampleFunction: () => { getActions().changeColor(0, "green"); }, // Use getActions to call a function within a fuction
@@ -154,9 +154,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			increase: () => { setStore({ counter: getStore().counter + 1 }) },
 			decrease: () => { setStore({ counter: getStore().counter - 1 }) },
-			addFavorites: (newFavorite) => { setStore({favorites: [...getStore().favorites, newFavorite]})},
-			removeFavorites: (removeItem) => { 
-				setStore({favorites: getStore().favorites.filter((item)=> item != removeItem)})
+			addFavorites: (newFavorite) => {
+				const store = getStore();
+				if (!store.favorites.includes(newFavorite)) {
+					setStore({ favorites: [...getStore().favorites, newFavorite] })
+				}
+			},
+			removeFavorites: (removeItem) => {
+				setStore({ favorites: getStore().favorites.filter((item) => item != removeItem) })
 			}
 		},
 	};
