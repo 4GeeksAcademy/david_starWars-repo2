@@ -152,12 +152,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().getContacts()
 
 			},
-			increase: () => { setStore({ counter: getStore().counter + 1 }) },
-			decrease: () => { setStore({ counter: getStore().counter - 1 }) },
+
 			addFavorites: (newFavorite) => {
 				const store = getStore();
 				if (!store.favorites.includes(newFavorite)) {
-					setStore({ favorites: [...getStore().favorites, newFavorite] })
+					setStore({ favorites: [...store.favorites, newFavorite] })
+				console.log("estos son mis favoritos",store.favorites);
 				}
 			},
 			removeFavorites: (removeItem) => {
