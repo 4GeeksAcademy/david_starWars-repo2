@@ -77,8 +77,8 @@ class Characters(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     name = db.Column(db.String(), nullable = False)
     description = db.Column(db.String(), nullable = False)
-    home_World = db.Column(db.Integer, db.ForeignKey('planets_id'))
-    home_World_to = db.relationship('Planets')
+    home_World_id = db.Column(db.Integer, db.ForeignKey('planets.id'))
+    home_World_to = db.relationship('Planets', foreign_keys=[home_World_id])
 
     def __repr__(self):
         return f'<User: {self.name}>'
@@ -130,18 +130,18 @@ class Characters(db.Model):
 #             'director': self.director,
 #             }
 
-# class Planets(db.Model):
-    # id = db.Column(db.Integer(), primary_key = True)
-    # name = db.Column(db.String(), nullable = False)
-    # diemeter = db.Column(db.Float(), nullable = False)
+class Planets(db.Model):
+    id = db.Column(db.Integer(), primary_key = True)
+    name = db.Column(db.String(), nullable = False)
+    diemeter = db.Column(db.Float(), nullable = False)
 
-    # def __repr__(self):
-    #     return f'<User: {self.name}>'
+    def __repr__(self):
+        return f'<User: {self.name}>'
 
-    # def serialize(self):
-    #      # do not serialize the password, its a security breach
-    #     return { #esto es un diccionario (objeto en js)
-    #         "id": self.id,
-    #         'name': self.name,
-    #         'diemeter': self.diemeter,
-    #         }
+    def serialize(self):
+         # do not serialize the password, its a security breach
+        return { #esto es un diccionario (objeto en js)
+            "id": self.id,
+            'name': self.name,
+            'diemeter': self.diemeter,
+            }

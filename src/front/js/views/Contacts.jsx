@@ -42,7 +42,7 @@ export const Contacts = () => {
                         </li>
 
                     </ul>
-                    <div className="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center ">
                         <span onClick={() => editTask(item.name)} className="ms-3"><i className="fas fa-edit text-success"></i></span>
                         <span onClick={() => handleDelete(item.id)} className="ms-3"><i className="fas fa-trash text-danger"></i></span>
                     </div>

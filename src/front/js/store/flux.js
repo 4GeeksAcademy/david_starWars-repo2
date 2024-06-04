@@ -152,19 +152,36 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().getContacts()
 
 			},
-
-			addFavorites: (newFavorite) => {
-				const store = getStore();
-				if (!store.favorites.includes(newFavorite)) {
-					setStore({ favorites: [...store.favorites, newFavorite] })
-				console.log("estos son mis favoritos",store.favorites);
+			addAgenda: async (dataToSend) => {
+				const uri = getStore().uriContacts + 'agendas' + getStore().agenda
+				const options = {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(dataToSend)
 				}
-			},
-			removeFavorites: (removeItem) => {
-				setStore({ favorites: getStore().favorites.filter((item) => item != removeItem) })
-			}
-		},
-	};
-}
+				const response = await fetch(uri, options)
+				console.log("datos RESPONSE", response);
+				if (!response.ok) {
+					console.log("no se enviaron ", response.status, response.statusText)
+					return
+				}
+				getActions().getContacts()
+				},
 
-export default getState;
+				addFavorites: (newFavorite) => {
+					const store = getStore();
+					if (!store.favorites.includes(newFavorite)) {
+						setStore({ favorites: [...store.favorites, newFavorite] })
+						console.log("estos son mis favoritos", store.favorites);
+					}
+				},
+					removeFavorites: (removeItem) => {
+						setStore({ favorites: getStore().favorites.filter((item) => item != removeItem) })
+					}
+			},
+		};
+	}
+
+	export default getState;

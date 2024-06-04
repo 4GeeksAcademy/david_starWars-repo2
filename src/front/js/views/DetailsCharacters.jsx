@@ -47,23 +47,4 @@ export const DetailsCharacters = () => {
   )
 }
 
-{/* 
-    <div className="card mt-2 " style={{ width: '19rem', margin: '0 auto' }}>
-      <div className="d-flex flex-row mb-3">
-        <img src={`https://starwars-visualguide.com/assets/img/characters/${store.currentUser.uid}.jpg`} className="card-img-top"style={{height: '100%'}} />
-        <div className="card-body">
-          <p>
-            {Object.values(store.currentUser).length ?
-
-              <h3>{store.currentUser?.properties?.name}</h3>
-
-              :
-
-              "NO HAY NADA"
-
-            }</p>
-        </div>
-      </div>
-    </div> */}
-
 

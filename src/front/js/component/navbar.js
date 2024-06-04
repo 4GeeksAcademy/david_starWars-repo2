@@ -42,7 +42,7 @@ export const Navbar = () => {
 								{store.favorites.map((item, index) =>
 									<li key={index} className="dropdown-item d-flex justify-content-between me-1">
 										{item}
-									<span onClick={() => actions.removeFavorites(item)} className="text-danger">
+									<span onClick={() => actions.removeFavorites(item)} className="text-danger" style={{cursor: 'pointer'}}>
 										<i className="fas fa-trash"></i>
 									</span>
 									</li>)
