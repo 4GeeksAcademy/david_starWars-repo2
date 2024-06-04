@@ -9,6 +9,7 @@ import injectContext from "./store/appContext.js";
 import { Characters } from "./views/Characters.jsx"
 import { Planets } from "./views/Planets.jsx"
 import { Vehicles } from "./views/Vehicles.jsx"
+import { Agendas } from "./views/Agendas.jsx"
 
 
 
@@ -42,6 +43,7 @@ const Layout = () => {
 						<Route path="/contacts" element={<Contacts/>} />		
 						<Route path="/login" element={<Login/>} />		
 						<Route path="/vehicles" element={<Vehicles/>} />		
+						<Route path="/agendas" element={<Agendas/>} />		
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />

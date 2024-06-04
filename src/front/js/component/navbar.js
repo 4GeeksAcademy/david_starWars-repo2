@@ -32,17 +32,17 @@ export const Navbar = () => {
 
 
 					<div className="ms-auto me-3 mt-1">
-						<div class="dropdown">
-							<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<div className="dropdown">
+							<button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 								Favorites
-								<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+								<span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
 									{store.favorites.length}
 								</span>							</button>
-							<ul class="dropdown-menu dropdown-menu-end">
+							<ul className="dropdown-menu dropdown-menu-end">
 								{store.favorites.map((item, index) =>
-									<li key={index} class="dropdown-item d-flex justify-content-between me-1">
+									<li key={index} className="dropdown-item d-flex justify-content-between me-1">
 										{item}
-									<span onClick={() => actions.removeFavorites(item)} className="text-danger">
+									<span onClick={() => actions.removeFavorites(item)} className="text-danger" style={{cursor: 'pointer'}}>
 										<i className="fas fa-trash"></i>
 									</span>
 									</li>)

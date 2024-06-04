@@ -51,7 +51,7 @@ class Posts(db.Model):
             'user_id': self.user_id,
             }
 
-        
+
 class Comments(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     body = db.Column(db.String(), nullable=False)
@@ -66,21 +66,19 @@ class Comments(db.Model):
 
     def serialize(self):
          # do not serialize the password, its a security breach
-        return { #esto es un diccionario (objeto en js)
-            "id": self.id,
+        return {"id": self.id,
             'body': self.body,
             'date': self.date,
             'author_id': self.author_id,
-            'post_id': self.post_id,
-            }
+            'post_id': self.post_id}
 
 
 class Characters(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
     name = db.Column(db.String(), nullable = False)
     description = db.Column(db.String(), nullable = False)
-    home_World = db.Column(db.Integer, db.ForeignKey('planets_id'))
-    home_World_to = db.relationship('Planets')
+    home_World_id = db.Column(db.Integer, db.ForeignKey('planets.id'))
+    home_World_to = db.relationship('Planets', foreign_keys=[home_World_id])
 
     def __repr__(self):
         return f'<User: {self.name}>'
@@ -94,43 +92,43 @@ class Characters(db.Model):
             'home_World': self.home_World,
             }
 
-class CharactersFilms(db.Model):
-    id = db.Column(db.Integer(), primary_key = True)
-    role = db.Column(db.String(), nullable = True)
-    character_id = db.Column(db.Integer(), db.ForeignKey('characters_id'))
-    character_to = db.relationship('Characters')
-    film_id = db.Column(db.Integer(), db.ForeignKey('films_id'))
-    film_to = db.relationship('Films')
+# class CharactersFilms(db.Model):
+    # id = db.Column(db.Integer(), primary_key = True)
+    # role = db.Column(db.String(), nullable = True)
+    # character_id = db.Column(db.Integer(), db.ForeignKey('characters_id'))
+    # character_to = db.relationship('Characters')
+    # film_id = db.Column(db.Integer(), db.ForeignKey('films_id'))
+    # film_to = db.relationship('Films')
       
-    def __repr__(self):
-        return f'<User: {self.role}>'
+    # def __repr__(self):
+    #     return f'<User: {self.role}>'
 
-    def serialize(self):
-         # do not serialize the password, its a security breach
-        return { #esto es un diccionario (objeto en js)
-            "id": self.id,
-            'role': self.role,
-            'character_id': self.character_id,
-            'film_id': self.film_id,
-            }
+    # def serialize(self):
+    #      # do not serialize the password, its a security breach
+    #     return { #esto es un diccionario (objeto en js)
+    #         "id": self.id,
+    #         'role': self.role,
+    #         'character_id': self.character_id,
+    #         'film_id': self.film_id,
+    #         }
 
-class Films(db.Model):
-    id = db.Column(db.Integer(), primary_key = True)
-    name = db.Column(db.String(), nullable = False)
-    release = db.Column(db.Date(), nullable = False)
-    director = db.Column(db.String(), nullable = False)
+# class Films(db.Model):
+#     id = db.Column(db.Integer(), primary_key = True)
+#     name = db.Column(db.String(), nullable = False)
+#     release = db.Column(db.Date(), nullable = False)
+#     director = db.Column(db.String(), nullable = False)
 
-    def __repr__(self):
-        return f'<User: {self.name}>'
+#     def __repr__(self):
+#         return f'<User: {self.name}>'
 
-    def serialize(self):
-         # do not serialize the password, its a security breach
-        return { #esto es un diccionario (objeto en js)
-            "id": self.id,
-            'name': self.name,
-            'release': self.release,
-            'director': self.director,
-            }
+#     def serialize(self):
+#          # do not serialize the password, its a security breach
+#         return { #esto es un diccionario (objeto en js)
+#             "id": self.id,
+#             'name': self.name,
+#             'release': self.release,
+#             'director': self.director,
+#             }
 
 class Planets(db.Model):
     id = db.Column(db.Integer(), primary_key = True)
