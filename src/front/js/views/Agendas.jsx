@@ -1,15 +1,12 @@
 import React from "react";
 
 
-export const Agenda = () => {
+export const Agendas = () => {
 
 
     return (
-        <>
-            <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="addon-wrapping">@</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/>
-            </div>
-        </>
+        <div className="input-group flex-nowrap">
+            <input type="text" className="form-control" style={{ width: '100px' }} placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"/>
+        </div>
     )
 }

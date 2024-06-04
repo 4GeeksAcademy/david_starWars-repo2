@@ -33,6 +33,8 @@ def login():
      response_body['message'] = 'Bad username or password logeado'
     return response_body, 401
 
+
+
     @api.route("/profile", methods=["GET"])
 @jwt_required()
 def protected():

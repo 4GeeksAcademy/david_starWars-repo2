@@ -9,6 +9,7 @@ import injectContext from "./store/appContext.js";
 import { Characters } from "./views/Characters.jsx"
 import { Planets } from "./views/Planets.jsx"
 import { Vehicles } from "./views/Vehicles.jsx"
+import { Agendas } from "./views/Agendas.jsx"
 
 
 
